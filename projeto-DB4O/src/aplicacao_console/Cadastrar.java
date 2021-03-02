@@ -1,8 +1,10 @@
 package aplicacao_console;
 
+import dao.DAO;
+
+import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
-import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ClientConfiguration;
 import modelo.*;
@@ -14,10 +16,14 @@ public class Cadastrar {
 
     public Cadastrar(){
         abrirBancoLocal();
+        this.cadastrar();
+        this.fecharBanco();
+        System.out.println("Encerrando aplicacao");
     }
 
     public void abrirBancoLocal(){
-        EmbedderConfiguration config = Db4oEmbedder.newConfiguration();
+
+    	EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 
         config.common().messageLevel(0);  // 0,1,2,3...
         config.common().objectClass(Assunto.class).cascadeOnDelete(true);;
@@ -40,5 +46,21 @@ public class Cadastrar {
             manager.close();
     }
 
+    public void cadastrar() {
+    	
+    	System.out.println("Cadastrando");
+    	
+    	Video v1 = new Video("Favorito","O Cego Espiao");
+    	v1.adicionar(new Assunto("Acao"));
+    	v1.adicionar(new Visualizacao(1,9,new Usuario("usuario@eu.com"),v1));
+    	// Salvando o objeto
+    	manager.store(v1);
+    	manager.commit();
+    }
+    
+    public static void main(String[] args) {
+    	new Cadastrar();
+    }
+    
 
 }
