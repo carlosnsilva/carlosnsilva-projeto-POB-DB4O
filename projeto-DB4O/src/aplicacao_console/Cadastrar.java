@@ -58,9 +58,10 @@ public class Cadastrar {
     	manager.commit();
     }
     
-    public static void main(String[] args) {
-    	new Cadastrar();
-    }
     
+    public static void main(String[] args) {
+		new Cadastrar();
+	}
+
 
 }
