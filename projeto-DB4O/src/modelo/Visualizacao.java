@@ -23,9 +23,4 @@ public class Visualizacao {
 				", nota=" + nota +
 				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]";
 	}
-
-	
-	
-	
-
 }
