@@ -1,5 +1,7 @@
 package modelo;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +14,16 @@ public class Video {
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 
 	
-	public Video(String link, String nome, ArrayList<Assunto> assuntos) {
+	public Video(String link, String nome, String palavra, String dataStr) {
 		this.link = link;
 		this.nome = nome;
-		this.assuntos = assuntos;
-		this.dataHora = LocalDateTime.now();
+		this.assuntos.add(new Assunto(palavra));
+		try {
+			dataHora = LocalDateTime.parse(dataStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));	
+		} 
+		catch (DateTimeParseException e) {
+			throw new RuntimeException("formato datahora deve ser 00/00/0000 00:00");
+		}
 	}
 	
 	public String getNome() {
@@ -38,11 +45,11 @@ public class Video {
 	@Override
 	public String toString() {
 		String texto = "Video [" + (link != null ? "link=" + link + ", " : "") + (nome != null ? "nome=" + nome + ", " : "")
-				+ "media=" + media ;
+				+ "media=" + media + ", " + "dataHora=" + dataHora;
 		
 		texto+=", assuntos=";
 		for(Assunto a : assuntos) {
-			texto += a.getPalavra();
+			texto += a.getPalavra() + ",";
 		}
 		texto+="\n visualizacoes=";
 		for(Visualizacao vis : visualizacoes) {

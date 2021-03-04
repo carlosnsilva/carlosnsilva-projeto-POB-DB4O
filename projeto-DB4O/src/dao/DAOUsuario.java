@@ -7,11 +7,11 @@ import modelo.Usuario;
 public class DAOUsuario extends DAO<Usuario>{
 
 	public Usuario read (Object chave) {
-		String nome = (String) chave;
+		String mail = (String) chave;
 		
 		Query q = manager.query();
 		q.constrain(Usuario.class);
-		q.descend("email").constrain(nome);
+		q.descend("email").constrain(mail);
 		List<Usuario> resultados = q.execute();
 		if (resultados.size()>0)
 			return resultados.get(0);

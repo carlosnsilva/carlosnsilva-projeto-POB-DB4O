@@ -9,13 +9,13 @@ import modelo.Assunto;
 
 public class DAOAssunto  extends DAO<Assunto>{
 
-	public Aluno read (Object chave) {
-		String nome = (String) chave;
+	public Assunto read (Object chave) {
+		String pal = (String) chave;
 		
 		Query q = manager.query();
-		q.constrain(Aluno.class);
-		q.descend("nome").constrain(nome);
-		List<Aluno> resultados = q.execute();
+		q.constrain(Assunto.class);
+		q.descend("palavra").constrain(pal);
+		List<Assunto> resultados = q.execute();
 		if (resultados.size()>0)
 			return resultados.get(0);
 		else
