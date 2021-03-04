@@ -7,11 +7,11 @@ import modelo.Video;
 public class DAOVideo extends DAO<Video>{
 
 	public Video read (Object chave) {
-		String nome = (String) chave;
+		String link = (String) chave;
 		
 		Query q = manager.query();
 		q.constrain(Video.class);
-		q.descend("nome").constrain(nome);
+		q.descend("link").constrain(link);
 		List<Video> resultados = q.execute();
 		if (resultados.size()>0)
 			return resultados.get(0);

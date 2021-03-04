@@ -7,11 +7,11 @@ import modelo.Visualizacao;
 public class DAOVisualizacao extends DAO<Visualizacao>{
 
 	public Visualizacao read (Object chave) {
-		String nome = (String) chave;
+		String num = (String) chave;
 		
 		Query q = manager.query();
 		q.constrain(Visualizacao.class);
-		q.descend("nota").constrain(nome);
+		q.descend("nota").constrain(num);
 		List<Visualizacao> resultados = q.execute();
 		if (resultados.size()>0)
 			return resultados.get(0);

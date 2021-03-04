@@ -10,7 +10,6 @@ public class Assunto {
 		this.palavra = palavra;
 	}
 
-	
 	public String getPalavra() {
 		return palavra;
 	}
