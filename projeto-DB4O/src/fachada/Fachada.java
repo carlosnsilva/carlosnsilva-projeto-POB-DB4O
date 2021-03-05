@@ -17,6 +17,7 @@ public class Fachada {
 	private static DAOUsuario daousuario = new DAOUsuario();  
 	private static DAOVideo daovideo = new DAOVideo();
 	private static DAOVisualizacao daovisualizacao = new DAOVisualizacao();
+	
 
 	 
 	public static void inicializar(){
@@ -66,6 +67,7 @@ public class Fachada {
 		DAO.commit();
 	}
 	
+	
 	public static List<Video> listarVideos(){
 		return daovideo.readAll();
 	}
@@ -73,4 +75,71 @@ public class Fachada {
 	public static List<Usuario> listarUsuarios(){
 		return daousuario.readAll();
 	}
+	
+	public static List<Assunto> listarAssunto(){
+		return daoassunto.readAll();
+	}
+	
+	public static List<Visualizacao> listarVisualizacao(){
+		return daovisualizacao.readAll();
+	}
+	
+	public static void apagarAssunto(String link) throws Exception {
+		DAO.begin();
+		Assunto ass = daoassunto.read(link);
+		
+		// verificação se existe o assunto
+		if(ass == null) {
+			DAO.rollback();
+			throw new Exception("Assunto inexistente: "+ link);
+		}
+		
+		daoassunto.delete(ass);
+		DAO.commit();
+		
+	}
+	
+	public static void apagarUsuario(String email) throws Exception {
+		DAO.begin();
+		Usuario usuario = daousuario.read(email);
+
+		// verificação se existe o usuario
+		if(usuario == null) {
+			DAO.rollback();
+			throw new Exception("Usuario inexistente: "+ email);
+		}
+		
+		daousuario.delete(usuario);
+		DAO.commit();
+	}
+	
+	public static void apagarVisualizacao(Integer id) throws Exception {
+		DAO.begin();
+		Visualizacao visual = daovisualizacao.read(id);
+		
+		// verificação se existe o usuario
+		if(visual == null) {
+			DAO.rollback();
+			throw new Exception("Visualizacao inexistente: "+ id.toString());
+		}
+		
+		daovisualizacao.delete(visual);
+		DAO.commit();
+	}
+	
+	public static void apagarVideo(String link) throws Exception{
+		DAO.begin();
+		Video v = daovideo.read(link);
+		
+		// verificação se existe video
+		if(v == null) {
+			DAO.rollback();
+			throw new Exception("Video inexistente: "+ link);
+		}
+		
+		daovideo.delete(v);
+		DAO.commit();
+	}
+	
+	
 }
