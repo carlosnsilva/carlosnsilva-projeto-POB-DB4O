@@ -9,10 +9,11 @@ public class Cadastrar {
 			Fachada.inicializar();
 			
 			System.out.println("cadastrando...");
-			Fachada.cadastrarVideo("youtube.com/pob", "aula 1-pob", "persistência", "04/03/2021 11:00:00");
+			Fachada.cadastrarVideo("youtube.com/pob", "aula 1-pob", "persistencia", "04/03/2021 11:00:00");
 			Fachada.cadastrarVideo("youtube.com/poo", "aula 1-poo", "objetos", "04/03/2021 12:00:00");
 			Fachada.cadastrarUsuario("carlos@email.com");
 			Fachada.cadastrarUsuario("guilherme@email.com");
+			Fachada.adicionarAssunto("youtube.com/poo", "Java");
 			
 			
 		} catch (Exception e) 	{

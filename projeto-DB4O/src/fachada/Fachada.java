@@ -67,6 +67,7 @@ public class Fachada {
 		DAO.commit();
 	}
 	
+	
 	public static List<Video> listarVideos(){
 		return daovideo.readAll();
 	}
@@ -75,14 +76,22 @@ public class Fachada {
 		return daousuario.readAll();
 	}
 	
-	public static void apagarAssunto(String assunto) throws Exception {
+	public static List<Assunto> listarAssunto(){
+		return daoassunto.readAll();
+	}
+	
+	public static List<Visualizacao> listarVisualizacao(){
+		return daovisualizacao.readAll();
+	}
+	
+	public static void apagarAssunto(String link) throws Exception {
 		DAO.begin();
-		Assunto ass = daoassunto.read(assunto);
+		Assunto ass = daoassunto.read(link);
 		
 		// verificação se existe o assunto
 		if(ass == null) {
 			DAO.rollback();
-			throw new Exception("Assunto inexistente: "+ assunto);
+			throw new Exception("Assunto inexistente: "+ link);
 		}
 		
 		daoassunto.delete(ass);
