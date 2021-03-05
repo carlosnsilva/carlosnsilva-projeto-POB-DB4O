@@ -10,10 +10,7 @@ public class Apagar {
 			Fachada.inicializar();
 			
 			System.out.println("Apagando... ");
-			Fachada.apagarAssunto("youtube.com/poo");
-			Fachada.apagarUsuario("carlos@email.com");
 			Fachada.apagarVisualizacao(1);
-			Fachada.apagarVideo("youtube.com/poo");
 		} catch (Exception e) 	{
 			System.out.println(e.getMessage());
 		}
@@ -34,6 +31,4 @@ public class Apagar {
 		new Apagar();
 	}
 		
-	}
-	
 }

@@ -17,9 +17,8 @@ public class Fachada {
 	private static DAOUsuario daousuario = new DAOUsuario();  
 	private static DAOVideo daovideo = new DAOVideo();
 	private static DAOVisualizacao daovisualizacao = new DAOVisualizacao();
+	private static int id = 1;
 	
-
-	 
 	public static void inicializar(){
 		DAO.open();
 	}
@@ -29,10 +28,10 @@ public class Fachada {
 	
 	public static Video cadastrarVideo(String link, String nome, String palavra, String dataStr) throws  Exception{
 		DAO.begin();	
-		Video v = daovideo.read(nome);
+		Video v = daovideo.read(link);
 		if(v != null) {
 			DAO.rollback();
-			throw new Exception("video ja cadastrado:" + nome);
+			throw new Exception("video ja cadastrado:" + link);
 		}
 		v = new Video(link, nome, palavra, dataStr);
 		daovideo.create(v);	
@@ -67,7 +66,50 @@ public class Fachada {
 		DAO.commit();
 	}
 	
+	public static void registrarVisualizacao(String link, String email, int nota) throws Exception{
+		DAO.begin();
+		Video video = daovideo.read(link);
+		if(video == null) {
+			DAO.rollback();
+			throw new Exception("video inexistente:" + link);
+		}
+		Usuario usuario = daousuario.read(email);
+		if(usuario == null) {
+			DAO.rollback();
+			throw new Exception("usuario inexistente:" + email);
+		}
+		Visualizacao vis = new Visualizacao(id, nota, usuario, video);
+		usuario.adicionar(vis);
+		video.adicionar(vis);
+		daovisualizacao.create(vis);
+		DAO.commit();
+		id++;
+	}
 	
+	public static Visualizacao localizarVisualizacao(int id) {
+		DAO.begin();
+		Visualizacao vis = daovisualizacao.read(id);
+		if(vis == null) {
+			DAO.rollback();
+			return null;
+		}else {
+			return vis;	
+		} 
+	}
+	
+	public static void apagarVisualizacao(int id) throws Exception {
+		DAO.begin();
+		Visualizacao visual = localizarVisualizacao(id);
+		// verifica se a visualizacao existe
+		if(visual == null) {
+			DAO.rollback();
+			throw new Exception("Visualizacao de id " + id + " inexistente");
+		}
+		daovisualizacao.delete(visual);
+		DAO.commit();
+	}
+	
+	//MÃ©todos de listagem
 	public static List<Video> listarVideos(){
 		return daovideo.readAll();
 	}
@@ -83,63 +125,4 @@ public class Fachada {
 	public static List<Visualizacao> listarVisualizacao(){
 		return daovisualizacao.readAll();
 	}
-	
-	public static void apagarAssunto(String link) throws Exception {
-		DAO.begin();
-		Assunto ass = daoassunto.read(link);
-		
-		// verificação se existe o assunto
-		if(ass == null) {
-			DAO.rollback();
-			throw new Exception("Assunto inexistente: "+ link);
-		}
-		
-		daoassunto.delete(ass);
-		DAO.commit();
-		
-	}
-	
-	public static void apagarUsuario(String email) throws Exception {
-		DAO.begin();
-		Usuario usuario = daousuario.read(email);
-
-		// verificação se existe o usuario
-		if(usuario == null) {
-			DAO.rollback();
-			throw new Exception("Usuario inexistente: "+ email);
-		}
-		
-		daousuario.delete(usuario);
-		DAO.commit();
-	}
-	
-	public static void apagarVisualizacao(Integer id) throws Exception {
-		DAO.begin();
-		Visualizacao visual = daovisualizacao.read(id);
-		
-		// verificação se existe o usuario
-		if(visual == null) {
-			DAO.rollback();
-			throw new Exception("Visualizacao inexistente: "+ id.toString());
-		}
-		
-		daovisualizacao.delete(visual);
-		DAO.commit();
-	}
-	
-	public static void apagarVideo(String link) throws Exception{
-		DAO.begin();
-		Video v = daovideo.read(link);
-		
-		// verificação se existe video
-		if(v == null) {
-			DAO.rollback();
-			throw new Exception("Video inexistente: "+ link);
-		}
-		
-		daovideo.delete(v);
-		DAO.commit();
-	}
-	
-	
 }

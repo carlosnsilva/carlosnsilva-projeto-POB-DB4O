@@ -24,7 +24,8 @@ public class Usuario {
 		
 		texto+="\n visualizacoes=";
 		for(Visualizacao vis : visualizacoes) {
-			texto += vis;
+			//texto += vis;
+			texto += (vis != null ? vis + ", " : "");
 		}
 		return texto;
 	}
