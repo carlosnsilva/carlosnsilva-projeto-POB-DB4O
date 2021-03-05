@@ -18,7 +18,7 @@ public class Visualizacao {
 
 	@Override
 	public String toString() {
-		return "Visualizacao [id=" + id + 
+		return "[id=" + id + 
 				", datahora=" + datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss")) + 
 				", nota=" + nota +
 				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]";

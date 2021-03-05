@@ -7,8 +7,9 @@ public class Atualizar {
 	public Atualizar(){
 		Fachada.inicializar();
 		try {
+			System.out.println("adicionando assuntos...");
 			Fachada.adicionarAssunto("youtube.com/pob", "db40");
-			System.out.println("adicionando mais um assunto no video");
+			Fachada.adicionarAssunto("youtube.com/poo", "Java");
 		} 
 		catch (Exception e) {
 			System.out.println(e.getMessage());

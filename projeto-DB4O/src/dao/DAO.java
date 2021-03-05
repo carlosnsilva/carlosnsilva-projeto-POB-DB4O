@@ -1,7 +1,7 @@
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
  * Persistencia de Objetos
- * Prof. Fausto Maranhão Ayres
+ * Prof. Fausto Maranhï¿½o Ayres
  **********************************/
 
 package dao;
@@ -42,7 +42,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 		config.common().objectClass(Usuario.class).cascadeOnDelete(true);
 		config.common().objectClass(Usuario.class).cascadeOnActivate(true);
 		config.common().objectClass(Visualizacao.class).cascadeOnUpdate(true);
-		config.common().objectClass(Visualizacao.class).cascadeOnDelete(true);
+		//config.common().objectClass(Visualizacao.class).cascadeOnDelete(true);
 		config.common().objectClass(Visualizacao.class).cascadeOnActivate(true);
 		// 		indices
 		config.common().objectClass(Video.class).objectField("link").indexed(true);
@@ -90,7 +90,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 		return (List<T>) (q.execute());
 	}
 
-	//--------transação---------------
+	//--------transaï¿½ï¿½o---------------
 	public static void begin(){	
 	}		// tem que ser vazio
 
@@ -100,8 +100,5 @@ public abstract class DAO<T> implements DAOInterface<T> {
 	public static void rollback(){
 		manager.rollback();
 	}
-
-
-
 }
 
