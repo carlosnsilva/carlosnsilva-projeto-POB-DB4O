@@ -33,6 +33,15 @@ public class Video {
 	public String getLink() {
 		return link;
 	}
+	
+	public double getMedia() {
+		double total = 0;
+		for(Visualizacao v : visualizacoes) {
+		    total += v.getNota();
+		}
+		media = total / visualizacoes.size();
+		return media;
+	}
 
 	public void adicionar(Assunto a) {
 		assuntos.add(a);
@@ -45,7 +54,7 @@ public class Video {
 	@Override
 	public String toString() {
 		String texto = "\nVideo [" + (link != null ? "link=" + link + ", " : "") + (nome != null ? "nome=" + nome + ", " : "")
-				+ "media=" + media + ", " + "dataHora=" + dataHora;
+				+ "media=" + getMedia() + ", " + "dataHora=" + dataHora;
 		
 		texto+=", assuntos=";
 		for(Assunto a : assuntos) {

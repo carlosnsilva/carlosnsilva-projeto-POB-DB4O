@@ -15,6 +15,10 @@ public class Visualizacao {
 		this.usuario = usuario;
 		this.video = video;
 	}
+	
+	public int getNota() {
+		return nota;
+	}
 
 	@Override
 	public String toString() {
