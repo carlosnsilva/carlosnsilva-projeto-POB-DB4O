@@ -125,4 +125,17 @@ public class Fachada {
 	public static List<Visualizacao> listarVisualizacao(){
 		return daovisualizacao.readAll();
 	}
+	
+	public static List<Video> consultarVideosPorAssunto(String palavra) {
+		return daovideo.consultarVideosPorAssunto(palavra);
+	}
+	
+	public static List<Video> consultarVideosPorUsuario(String email) {
+		return daovideo.consultarVideosPorUsuario(email);
+	}
+	
+	public static List<Usuario> consultarUsuarioPorVideo(String link) {
+		return daousuario.consultarUsuarioPorVideo(link);
+		
+	}
 }

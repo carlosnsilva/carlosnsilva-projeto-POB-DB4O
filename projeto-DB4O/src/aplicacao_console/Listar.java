@@ -1,6 +1,7 @@
 package aplicacao_console;
 
 import fachada.Fachada;
+import modelo.Assunto;
 import modelo.Usuario;
 import modelo.Video;
 import modelo.Visualizacao;
@@ -22,6 +23,10 @@ public class Listar {
 			System.out.println("\nListagem de visualizaçoes:");
 			for(Visualizacao vis : Fachada.listarVisualizacao() )		
 				System.out.println(vis + "\n");
+			
+			System.out.println("\nListagem de assuntos:");
+			for(Assunto ass : Fachada.listarAssunto() )		
+				System.out.println(ass + "\n");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
