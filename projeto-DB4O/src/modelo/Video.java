@@ -9,7 +9,7 @@ public class Video {
 	private String link;
 	private String nome;
 	private double media;
-	private LocalDateTime dataHora;
+	private String dataHora;
 	private List<Assunto> assuntos = new ArrayList<>();
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 
@@ -18,12 +18,16 @@ public class Video {
 		this.link = link;
 		this.nome = nome;
 		this.assuntos.add(new Assunto(palavra));
+		this.dataHora = dataStr;
+		/*
 		try {
 			dataHora = LocalDateTime.parse(dataStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));	
 		} 
 		catch (DateTimeParseException e) {
 			throw new RuntimeException("formato datahora deve ser 00/00/0000 00:00");
 		}
+		*/
+		
 	}
 	
 	public String getNome() {
@@ -41,6 +45,13 @@ public class Video {
 		}
 		media = total / visualizacoes.size();
 		return media;
+	}
+	
+	public String getDataHora() {
+		return this.dataHora;
+	}
+	public List<Assunto> getAssuntos() {
+		return assuntos;
 	}
 
 	public void adicionar(Assunto a) {

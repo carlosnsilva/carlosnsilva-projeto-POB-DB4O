@@ -1,5 +1,7 @@
 package fachada;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import dao.DAO;
@@ -26,13 +28,18 @@ public class Fachada {
 		DAO.close();
 	}
 	
-	public static Video cadastrarVideo(String link, String nome, String palavra, String dataStr) throws  Exception{
+	public static Video cadastrarVideo(String link, String nome, String palavra) throws  Exception{
 		DAO.begin();	
 		Video v = daovideo.read(link);
 		if(v != null) {
 			DAO.rollback();
 			throw new Exception("video ja cadastrado:" + link);
 		}
+		
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		String dataStr = currentDateTime.format(formatter);
+		
 		v = new Video(link, nome, palavra, dataStr);
 		daovideo.create(v);	
 		DAO.commit();
@@ -75,8 +82,9 @@ public class Fachada {
 		}
 		Usuario usuario = daousuario.read(email);
 		if(usuario == null) {
-			DAO.rollback();
-			throw new Exception("usuario inexistente:" + email);
+			//DAO.rollback();
+			//throw new Exception("usuario inexistente:" + email);
+			usuario = cadastrarUsuario(email);
 		}
 		Visualizacao vis = new Visualizacao(id, nota, usuario, video);
 		usuario.adicionar(vis);
@@ -127,7 +135,7 @@ public class Fachada {
 	}
 	
 	public static List<Video> consultarVideosPorAssunto(String palavra) {
-		return daovideo.consultarVideosPorAssunto(palavra);
+		return daovideo.consultarVideosPorAssunto(palavra); 
 	}
 	
 	public static List<Video> consultarVideosPorUsuario(String email) {
