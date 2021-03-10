@@ -16,6 +16,22 @@ public class Visualizacao {
 		this.video = video;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public String getDataHora() {
+		return datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss"));
+	}
+	
+	public String getUsuario() {
+		return usuario.getEmail();
+	}
+	
+	public String getVideo() {
+		return video.getLink();
+	}
+	
 	public int getNota() {
 		return nota;
 	}
@@ -25,6 +41,6 @@ public class Visualizacao {
 		return "[id=" + id + 
 				", datahora=" + datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss")) + 
 				", nota=" + nota +
-				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]";
+				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]"; 
 	}
 }
