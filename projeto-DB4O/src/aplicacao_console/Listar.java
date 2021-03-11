@@ -11,7 +11,7 @@ public class Listar {
 	public Listar(){
 		try {
 			Fachada.inicializar();
-
+			
 			System.out.println("\nListagem de videos:");
 			for(Video v : Fachada.listarVideos() )		
 				System.out.println(v + "\n");

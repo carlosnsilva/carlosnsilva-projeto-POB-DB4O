@@ -10,24 +10,23 @@ public class Cadastrar {
 			
 			System.out.println("cadastrando...");
 			
-			Fachada.cadastrarVideo("youtube.com/pob", "aula 1-pob", "persistencia");
-			Fachada.cadastrarVideo("youtube.com/poo", "aula 1-poo", "objetos");
-			Fachada.cadastrarVideo("youtube.com/pweb", "aula 1-pweb", "typescript");
-			Fachada.cadastrarVideo("youtube.com/bd2", "aula 1-bd2", "postgreSql");
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=1u2qu-EmIRc", "Git - Lecture 0 - CS50's Web Programming with Python and JavaScript 2018", "git");
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=6i-_R5cAcEc", "Curso POO Java #04b​ - Métodos Getter, Setter e Construtor", "objetos");
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "Programação para Web I - Inserindo Angular Material - Angular aula 2", "angular");
 			
 			Fachada.cadastrarUsuario("carlos@email.com");
 			Fachada.cadastrarUsuario("guilherme@email.com");
-			Fachada.cadastrarUsuario("jack@email.com");
+			Fachada.cadastrarUsuario("jane@email.com");
 			Fachada.cadastrarUsuario("david@email.com");
 			
-			Fachada.registrarVisualizacao("youtube.com/pob", "carlos@email.com", 5); 
-			Fachada.registrarVisualizacao("youtube.com/pob", "guilherme@email.com", 5);
-			Fachada.registrarVisualizacao("youtube.com/poo", "jack@email.com", 4);
-			Fachada.registrarVisualizacao("youtube.com/poo", "david@email.com", 4);
-			Fachada.registrarVisualizacao("youtube.com/pweb", "carlos@email.com", 5);
-			Fachada.registrarVisualizacao("youtube.com/pweb", "guilherme@email.com", 5);
-			Fachada.registrarVisualizacao("youtube.com/bd2", "jack@email.com", 3);
-			Fachada.registrarVisualizacao("youtube.com/bd2", "david@email.com", 3);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=1u2qu-EmIRc", "carlos@email.com", 5); 
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=1u2qu-EmIRc", "guilherme@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=6i-_R5cAcEc", "jane@email.com", 4);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=6i-_R5cAcEc", "david@email.com", 4);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "carlos@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "guilherme@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "jane@email.com", 3);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "david@email.com", 3);
 			
 			
 		} catch (Exception e) 	{
