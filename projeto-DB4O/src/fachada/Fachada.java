@@ -19,6 +19,7 @@ public class Fachada {
 	private static DAOUsuario daousuario = new DAOUsuario();  
 	private static DAOVideo daovideo = new DAOVideo();
 	private static DAOVisualizacao daovisualizacao = new DAOVisualizacao();
+	private static int id;
 	
 	public static void inicializar(){
 		DAO.open();
@@ -72,6 +73,17 @@ public class Fachada {
 		DAO.commit();
 	}
 	
+	public static Integer getMaiorId() throws Exception {
+		List<Visualizacao> vis = listarVisualizacao();
+		id = 0;
+		for (Visualizacao v : vis) {
+			if (v.getId() > id) {
+				id = v.getId();
+			}
+		}
+		return id;
+	};
+	
 	public static void registrarVisualizacao(String link, String email, int nota) throws Exception{
 		DAO.begin();
 		Video video = daovideo.read(link);
@@ -79,19 +91,22 @@ public class Fachada {
 			DAO.rollback();
 			throw new Exception("video inexistente:" + link);
 		}
+		
+		if(nota < 1 || nota > 5) {
+			throw new Exception("nota deve ser de 1 a 5");
+		}
+		
 		Usuario usuario = daousuario.read(email);
 		if(usuario == null) {
-			//DAO.rollback();
-			//throw new Exception("usuario inexistente:" + email);
 			usuario = cadastrarUsuario(email);
 		}
-
-		Visualizacao vis = new Visualizacao(nota, usuario, video);
+		
+		id = getMaiorId() + 1;
+		Visualizacao vis = new Visualizacao(id, nota, usuario, video);
 		usuario.adicionar(vis);
 		video.adicionar(vis);
 		daovisualizacao.create(vis);
 		DAO.commit();
-		//id++;
 	}
 	
 	public static Visualizacao localizarVisualizacao(int id) {

@@ -3,15 +3,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Visualizacao {
-	private static int counter = 0;
 	private int id;
 	private LocalDateTime datahora = LocalDateTime.now();
 	private int nota;
 	private Usuario usuario;
 	private Video video;
 	
-	public Visualizacao(int nota, Usuario usuario, Video video) {
-		this.id = ++counter;
+	public Visualizacao(int id, int nota, Usuario usuario, Video video) {
+		this.id = id;
 		this.nota = nota;
 		this.usuario = usuario;
 		this.video = video;
