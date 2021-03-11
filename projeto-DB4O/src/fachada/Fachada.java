@@ -19,7 +19,6 @@ public class Fachada {
 	private static DAOUsuario daousuario = new DAOUsuario();  
 	private static DAOVideo daovideo = new DAOVideo();
 	private static DAOVisualizacao daovisualizacao = new DAOVisualizacao();
-	private static int id = 1;
 	
 	public static void inicializar(){
 		DAO.open();
@@ -86,12 +85,12 @@ public class Fachada {
 			//throw new Exception("usuario inexistente:" + email);
 			usuario = cadastrarUsuario(email);
 		}
-		Visualizacao vis = new Visualizacao(id, nota, usuario, video);
+		Visualizacao vis = new Visualizacao(nota, usuario, video);
 		usuario.adicionar(vis);
 		video.adicionar(vis);
 		daovisualizacao.create(vis);
 		DAO.commit();
-		id++;
+		//id++;
 	}
 	
 	public static Visualizacao localizarVisualizacao(int id) {

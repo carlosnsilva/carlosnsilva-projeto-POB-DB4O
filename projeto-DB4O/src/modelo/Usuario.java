@@ -14,6 +14,10 @@ public class Usuario {
 		return email;
 	}
 	
+	public List<Visualizacao> getVisualizacoes(){
+		return visualizacoes;
+	}
+	
 	public void adicionar(Visualizacao vis) {
 		visualizacoes.add(vis);
 	}

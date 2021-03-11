@@ -3,37 +3,38 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Visualizacao {
+	private static int counter = 0;
 	private int id;
 	private LocalDateTime datahora = LocalDateTime.now();
 	private int nota;
 	private Usuario usuario;
 	private Video video;
 	
-	public Visualizacao(int id, int nota, Usuario usuario, Video video) {
-		this.id = id;
+	public Visualizacao(int nota, Usuario usuario, Video video) {
+		this.id = ++counter;
 		this.nota = nota;
 		this.usuario = usuario;
 		this.video = video;
 	}
 	
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	
 	public String getDataHora() {
-		return datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss"));
+		return this.datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss"));
 	}
 	
 	public String getUsuario() {
-		return usuario.getEmail();
+		return this.usuario.getEmail();
 	}
 	
 	public String getVideo() {
-		return video.getLink();
+		return this.video.getLink();
 	}
 	
 	public int getNota() {
-		return nota;
+		return this.nota;
 	}
 
 	@Override
