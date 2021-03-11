@@ -28,6 +28,7 @@ public class TelaPrincipal {
 	private JFrame frame;
 	private JMenu mnVideo;
 	private JMenu mnVisualizacao;
+	private JMenu mnConsulta;
 	private JMenuItem mntmCadastrarVideo;
 	private JMenuItem mntmListarVideo;
 	private JMenuItem mntmRegistrarVisualizacao;
@@ -88,13 +89,14 @@ public class TelaPrincipal {
 		label = new JLabel("");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setText("Inicializando...");
+	//	label.setText("Inicializando...");
 		label.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 	//	imagem = new ImageIcon(getClass().getResource("/imagens/imagem.jpg"));
-	//	imagem = new ImageIcon(imagem.getImage().getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_DEFAULT));//		label.setIcon(imagem);
+	//	imagem = new ImageIcon(imagem.getImage().getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_DEFAULT));
+	//	label.setIcon(imagem);
 		frame.getContentPane().add(label);
 		frame.setResizable(false);
-
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -128,56 +130,24 @@ public class TelaPrincipal {
 			}
 		});
 		mnVisualizacao.add(mntmRegistrarVisualizacao);
-		/**
-		mntmApelido = new JMenuItem("Apelidos");
-		mntmApelido.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaApelido tela = new TelaApelido();
-			}
-		});
-		mnPessoa.add(mntmApelido);
-		mnPessoa.add(mntmApagarPessoa);
-
-
-
-		//-----------------------------------------------------------------
-		mnTelefone = new JMenu("Telefone");
-		menuBar.add(mnTelefone);
-
-		mntmCadastrarTelefone = new JMenuItem("Cadastrar");
-		mntmCadastrarTelefone.addActionListener(new ActionListener() {
+		
+		mntmListarVisualizacao = new JMenuItem("Listar");
+		mntmListarVisualizacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastrar tela = new TelaCadastrar();
-			}
-		});
-		mnTelefone.add(mntmCadastrarTelefone);
-
-		mntmApagarTelefone = new JMenuItem("Apagar");
-		mntmApagarTelefone.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaApagar tela = new TelaApagar();
-			}
-		});
-		mnTelefone.add(mntmApagarTelefone);
-
-
-		mntmListarTelefone = new JMenuItem("Listar");
-		mntmListarTelefone.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 				TelaListar tela = new TelaListar();
 			}
 		});
-		mnTelefone.add(mntmListarTelefone);
+		mnVisualizacao.add(mntmListarVisualizacao);
 		
-
+		//-----------------------------------------------------------------
+		
 		mnConsulta = new JMenu("Consultas");
 		menuBar.add(mnConsulta);
 		mnConsulta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-			//	TelaConsultar tela = new TelaConsultar();
+				TelaConsultar tela = new TelaConsultar();
 			}
 		});
-		**/
 	}
 }

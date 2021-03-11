@@ -124,7 +124,6 @@ public class TelaListar {
 			public void actionPerformed(ActionEvent e) {
 				try{
 					DefaultTableModel model = new DefaultTableModel();
-					model.addColumn("ID");
 					model.addColumn("Video");
 					model.addColumn("Usuario");
 					model.addColumn("DataHora");
@@ -134,8 +133,7 @@ public class TelaListar {
 
 					List<Visualizacao> lista = Fachada.listarVisualizacao();
 					for(Visualizacao v : lista)
-						//for(Assunto a : v.getAssuntos())
-							model.addRow(new Object[]{ v.getId(), v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota() });
+							model.addRow(new Object[]{ v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota() });
 
 					table.setModel(model);
 				}
@@ -147,49 +145,6 @@ public class TelaListar {
 		button_1.setBounds(44, 210, 200, 23);
 		frmListar.getContentPane().add(button_1);
 
-		/*
-		button_1 = new JButton("Apagar pessoa selecionada");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				if (table.getSelectedRow() >= 0){
-					String nome = (String) table.getValueAt( table.getSelectedRow(), 0);
-					try {
-						Fachada.excluirPessoa(nome);
-						button.doClick();
-					}
-					catch(Exception erro) {}
-				}else{
-					JOptionPane.showMessageDialog(null, "selecionar uma linha");
-				}
-			}
-		});
-		button_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button_1.setHorizontalAlignment(SwingConstants.LEFT);
-		button_1.setBounds(44, 206, 200, 23);
-		frmListar.getContentPane().add(button_1);
-		
-		button_2 = new JButton("Apagar telefone selecionado");
-		button_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				if (table.getSelectedRow() >= 0){
-					String numero = (String) table.getValueAt( table.getSelectedRow(), 1);
-					try {
-						Fachada.excluirTelefone(numero);
-						button.doClick();
-					}
-					catch(Exception erro) {}
-				}else{
-					JOptionPane.showMessageDialog(null, "selecionar uma linha");
-				}
-			}
-		});
-		button_2.setHorizontalAlignment(SwingConstants.LEFT);
-		button_2.setBounds(44, 240, 200, 23);
-		frmListar.getContentPane().add(button_2);
-		*/
 		frmListar.setVisible(true);
 	}
 }

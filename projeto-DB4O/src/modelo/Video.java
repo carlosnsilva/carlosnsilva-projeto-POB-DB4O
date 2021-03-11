@@ -50,6 +50,7 @@ public class Video {
 	public String getDataHora() {
 		return this.dataHora;
 	}
+	
 	public List<Assunto> getAssuntos() {
 		return assuntos;
 	}
@@ -58,6 +59,10 @@ public class Video {
 		assuntos.add(a);
 	}
 	
+	public List<Visualizacao> getVisualizacoes() {
+		return visualizacoes;
+	}
+
 	public void adicionar(Visualizacao vis) {
 		visualizacoes.add(vis);
 	}
