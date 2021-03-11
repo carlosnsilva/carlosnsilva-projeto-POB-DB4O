@@ -2,16 +2,16 @@ package aplicacao_console;
 
 import fachada.*;
 
-public class Deletar {
+public class Apagar {
 
-	public Deletar() {
+	public Apagar() {
 		
 		try {
 			Fachada.inicializar();
 			
 			System.out.println("Apagando... ");
-			Fachada.apagarVisualizacao(1);
 			Fachada.apagarVisualizacao(8);
+			Fachada.apagarVisualizacao(9);
 		} catch (Exception e) 	{
 			System.out.println(e.getMessage());
 		}
@@ -29,7 +29,7 @@ public class Deletar {
 
 	//=================================================
 	public static void main(String[] args) {
-		new Deletar();
+		new Apagar();
 	}
 		
 }

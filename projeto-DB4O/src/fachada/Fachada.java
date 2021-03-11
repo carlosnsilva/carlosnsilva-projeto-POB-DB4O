@@ -85,6 +85,7 @@ public class Fachada {
 			//throw new Exception("usuario inexistente:" + email);
 			usuario = cadastrarUsuario(email);
 		}
+
 		Visualizacao vis = new Visualizacao(nota, usuario, video);
 		usuario.adicionar(vis);
 		video.adicionar(vis);
