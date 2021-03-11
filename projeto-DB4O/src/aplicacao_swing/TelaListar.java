@@ -127,6 +127,7 @@ public class TelaListar {
 			public void actionPerformed(ActionEvent e) {
 				try{
 					DefaultTableModel model = new DefaultTableModel();
+					model.addColumn("Id");
 					model.addColumn("Video");
 					model.addColumn("Usuario");
 					model.addColumn("DataHora");
@@ -136,7 +137,7 @@ public class TelaListar {
 
 					List<Visualizacao> lista = Fachada.listarVisualizacao();
 					for(Visualizacao v : lista)
-							model.addRow(new Object[]{ v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota() });
+							model.addRow(new Object[]{v.getId(), v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota() });
 
 					table.setModel(model);
 				}

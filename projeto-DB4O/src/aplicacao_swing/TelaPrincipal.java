@@ -32,6 +32,7 @@ public class TelaPrincipal {
 	private JMenuItem mntmCadastrarVideo;
 	private JMenuItem mntmListarVideo;
 	private JMenuItem mntmRegistrarVisualizacao;
+	private JMenuItem mntmApagarVisualizacao;
 	private JMenuItem mntmListarVisualizacao;
 	private JLabel label;
 	private ImageIcon imagem;
@@ -130,6 +131,14 @@ public class TelaPrincipal {
 			}
 		});
 		mnVisualizacao.add(mntmRegistrarVisualizacao);
+		
+		mntmApagarVisualizacao = new JMenuItem("Apagar");
+		mntmApagarVisualizacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaApagarView tela = new TelaApagarView();
+			}
+		});
+		mnVisualizacao.add(mntmApagarVisualizacao);
 		
 		mntmListarVisualizacao = new JMenuItem("Listar");
 		mntmListarVisualizacao.addActionListener(new ActionListener() {
