@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Desktop;
+import java.net.URL;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -30,6 +32,7 @@ public class TelaListar {
 	private JScrollPane scrollPane;
 	private JButton button;
 	private JButton button_1;
+	private JButton buttonOpenLink;
 
 	/**
 	 * Launch the application.
@@ -144,6 +147,26 @@ public class TelaListar {
 		});
 		button_1.setBounds(44, 210, 200, 23);
 		frmListar.getContentPane().add(button_1);
+		
+		buttonOpenLink = new JButton("Abrir Video no navegador");
+		buttonOpenLink.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		buttonOpenLink.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedRow() >= 0) {
+					String url = (String) table.getValueAt(table.getSelectedRow(),0);
+					try {
+						Desktop.getDesktop().browse(new URL(url).toURI());
+					} catch (Exception erro) {
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "selecione um link");
+				}}
+		});
+		
+		buttonOpenLink.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buttonOpenLink.setBounds(44, 245, 200, 23);
+		frmListar.getContentPane().add(buttonOpenLink);
 
 		frmListar.setVisible(true);
 	}

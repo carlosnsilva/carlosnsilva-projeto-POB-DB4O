@@ -22,7 +22,7 @@ public class Apagar {
 	}
 
 
-	public void deletar(){
+	public void apagar(){
 
 	}	
 
